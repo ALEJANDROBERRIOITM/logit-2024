@@ -111,7 +111,10 @@ class DatosEstudiante
                         break;
                     }
                 }
-                
+                catch (FormatException)
+                {
+                    Console.WriteLine("Por favor, ingrese valores válidos.");
+                }
             }
         }
     }
