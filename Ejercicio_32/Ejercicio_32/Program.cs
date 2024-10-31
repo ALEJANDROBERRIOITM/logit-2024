@@ -43,7 +43,40 @@ class Estudiante
             {
                 costoBase = Creditos * ValorCredito;
             }
-           
+            else
+            {
+                costoBase = 20 * ValorCredito + (Creditos - 20) * (ValorCredito * 2);
+            }
+
+            double descuento = 0;
+            switch (Estrato)
+            {
+                case 1:
+                    descuento = 0.80;
+                    break;
+                case 2:
+                    descuento = 0.50;
+                    break;
+                case 3:
+                    descuento = 0.30;
+                    break;
+            }
+
+            double costoFinal = costoBase * (1 - descuento);
+            return costoFinal;
+        }
+
+        public double CalcularSubsidio()
+        {
+            switch (Estrato)
+            {
+                case 1:
+                    return 200000;
+                case 2:
+                    return 100000;
+                default:
+                    return 0;
+            }
         }
     }
 
@@ -78,10 +111,7 @@ class DatosEstudiante
                         break;
                     }
                 }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Por favor, ingrese valores válidos.");
-                }
+                
             }
         }
     }
